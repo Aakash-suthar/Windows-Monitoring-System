@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinOwl", "WinOwl\WinOwl.csproj", "{6B69018F-29AF-472A-9A6C-273C5CE4D6BB}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WinOwlSetup2", "WinOwlSetup2\WinOwlSetup2.vdproj", "{BC7AAF6C-F80E-4239-96CF-86A3F39582A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B69018F-29AF-472A-9A6C-273C5CE4D6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B69018F-29AF-472A-9A6C-273C5CE4D6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B69018F-29AF-472A-9A6C-273C5CE4D6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B69018F-29AF-472A-9A6C-273C5CE4D6BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC7AAF6C-F80E-4239-96CF-86A3F39582A0}.Debug|Any CPU.ActiveCfg = Debug
+		{BC7AAF6C-F80E-4239-96CF-86A3F39582A0}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D6489B9-F3A0-4066-A0E9-56621956F73E}
+	EndGlobalSection
+EndGlobal
