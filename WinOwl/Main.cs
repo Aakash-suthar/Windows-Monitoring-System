@@ -21,8 +21,11 @@ namespace WinOwl
         private bool mouseDown,lb=false,about=false;
         private Point lastLocation;
         private int panelwidth=280;
+        public static Form MainForm=null;
+
         public Main()
         {
+            MainForm = this; 
             InitializeComponent();
           //  SystemEvents.SessionEnding += SessionEndingEvtHandler;
         }
@@ -53,12 +56,20 @@ namespace WinOwl
 
         private void AnimateButton_Click(object sender, EventArgs e)
         {
-            if (panel2.Width==0)
+            if (SlidePanel.Width==0)
             {
-                panel2.Visible = true;
-                panel2.Width = panelwidth;
+                //SlidePanel.Visible = true;
+                SlidePanel.Width = panelwidth;
+                bunifuTransition1.ShowSync(SlidePanel);  
             }
-            else { panel2.Visible = false; panel2.Width = 0;}
+            else {
+                //SlidePanel.Visible = false; 
+                //SlidePanel.Width = 0;
+                SlidePanel.Width = 0;
+                bunifuTransition1.HideSync(SlidePanel);
+                SlidePanel.Visible = false;
+
+            }
         }
         protected override CreateParams CreateParams
         {
@@ -84,9 +95,7 @@ namespace WinOwl
 
         private void metroButton5_Click(object sender, EventArgs e)
         {
-            GeneralFileWatcher.GetInstance().Stop();
-            ProgramWatcher.GetInstance().EndMonitoring();
-            FolderMonitor.GetInstance().EndMonitoring();
+            Log.reset();
             Application.Exit();
         }
 
@@ -99,8 +108,8 @@ namespace WinOwl
         private void LogoutButton_Click(object sender, EventArgs e)
         {
             lb = true;
+            SlidePanel.Width = 0;
             Hide();
-            Dispose();
             Login.Form1Instance.Show();
         }
 
@@ -130,8 +139,9 @@ namespace WinOwl
                 Log.DeleteFile = path + @"\DeleteFileLog.tp";
                 Log.ChangeFile = path + @"\ChangeFileLog.tp";
                 Log.RecentFile = path + @"\RecentFileLog.tp";
+                Console.WriteLine(Log.CreateFile+Log.RenameFile+Log.DeleteFile+Log.RecentFile);
             }
-            catch { }
+            catch(Exception exc) { MessageBox.Show(exc.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
             foreach (var drive in Directory.GetLogicalDrives())
             {
                 var item = treeView1.Nodes.Add(drive);
@@ -166,7 +176,7 @@ namespace WinOwl
                     file.Checked = e.Node.Checked;
                 }
             }
-            catch(Exception ex) { Console.WriteLine(ex.Message); }
+            catch (Exception exc) { MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -181,33 +191,31 @@ namespace WinOwl
 
         private void metroButton5_Click_1(object sender, EventArgs e)
         {
-            if (FileButton.Text == "START") { FileButton.Text = "MONITORING"; GeneralFileWatcher.GetInstance().Start(); }
-            else { FileButton.Text = "START"; GeneralFileWatcher.GetInstance().Stop(); }
-
+            FileButton.Text = "MONITORING"; GeneralFileWatcher.GetInstance().Start();FileButton.Enabled = false;
         }
 
         private void metroButton6_Click(object sender, EventArgs e)
         {
-            if (FolderButton.Text == "START") { FolderButton.Text = "MONITORING"; FolderMonitor.GetInstance().StartMonitoring(); }
-            else { FolderButton.Text = "START"; FolderMonitor.GetInstance().EndMonitoring(); }
+             FolderButton.Text = "MONITORING"; FolderMonitor.GetInstance().StartMonitoring(); FolderButton.Enabled = false;
         }
 
         private void metroButton7_Click_1(object sender, EventArgs e)
         {
-            if (ProgramButton.Text == "START") { ProgramButton.Text = "MONITORING"; ProgramWatcher.GetInstance().StartMonitoring(); }
-            else { ProgramButton.Text = "START"; ProgramWatcher.GetInstance().EndMonitoring(); }
+           ProgramButton.Text = "MONITORING"; ProgramWatcher.GetInstance().StartMonitoring(); ProgramButton.Enabled = false;
 
         }
 
         private void AboutButton_Click(object sender, EventArgs e)
         {
+            SlidePanel.Width = 0;
             if (Log.reset())
             {
-                if(MessageBox.Show("Successfully deleted", "ALert", MessageBoxButtons.OK) == DialogResult.OK)
+                if(MessageBox.Show("Successfully deleted", "INFO", MessageBoxButtons.OK,MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     Login.Form1Instance.Dispose();
                 }
             }
+            else { MessageBox.Show("Error in reseting..", "ALert", MessageBoxButtons.OK, MessageBoxIcon.Error);Login.Form1Instance.Dispose(); }
         }
         //private void SessionEndingEvtHandler(object sender, SessionEndingEventArgs e)
         //{

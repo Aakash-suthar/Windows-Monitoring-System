@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace WinOwl
 {
@@ -48,7 +49,7 @@ namespace WinOwl
                 }
                 filename = null;
             }
-            catch { filename = null; }
+            catch (Exception exc) { MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); filename = null; }
 
         }
 
@@ -66,7 +67,7 @@ namespace WinOwl
                         
 
                     }
-                    catch(Exception e) { Console.WriteLine(e.Message); }
+                    catch (Exception exc) { MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
             }
             File.Delete(RenameFile);
@@ -94,7 +95,7 @@ namespace WinOwl
                         { File.Delete(line); }
                        // Console.WriteLine("delete success");
                     }
-                    catch (Exception e) { Console.WriteLine(e.Message); }
+                    catch (Exception exc) { MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
             }
             File.Delete(CreateFile);
@@ -111,11 +112,9 @@ namespace WinOwl
                 clear();
                 return true;
             }
-            catch
-            {
-                return false;
-            }
-            
+            catch (Exception exc) { MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);return false; }
+
+
         }
         #endregion
     }

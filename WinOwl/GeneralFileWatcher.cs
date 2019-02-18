@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace WinOwl
 {
@@ -47,7 +48,7 @@ namespace WinOwl
         {
             foreach (DriveInfo d in DriveInfo.GetDrives())
             {
-                Console.WriteLine(d.Name);
+                //Console.WriteLine(d.Name);
                 if (d.DriveType != DriveType.Unknown && d.DriveType != DriveType.CDRom && d.DriveType != DriveType.Removable && d.Name!=@"C:\")
                 {
                     FileSystemWatcher f = new FileSystemWatcher();
@@ -94,7 +95,7 @@ namespace WinOwl
                              + DateTime.Now;
                 message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CHANGE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
-                Console.WriteLine(message);
+               // Console.WriteLine(message);
                 Log.LogIt(EventType.Change, e.FullPath);
 
                 //EventSender.GetInstance().ProcessMessage(message);
@@ -123,7 +124,7 @@ namespace WinOwl
 
                 message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.DELETE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
-                Console.WriteLine(message);
+                //Console.WriteLine(message);
                 Log.LogIt(EventType.Delete, e.FullPath);
 
                 //EventSender.GetInstance().ProcessMessage(message);
@@ -155,7 +156,7 @@ namespace WinOwl
 
                 message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.RENAME_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
-                Console.WriteLine(message);
+               // Console.WriteLine(message);
                 Log.LogIt(EventType.Rename, e.FullPath+"+"+e.OldFullPath+"+"+DateTime.Now.Day.ToString());
 
                 //EventSender.GetInstance().ProcessMessage(message);
@@ -182,7 +183,7 @@ namespace WinOwl
 
                 message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CREATE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
-                Console.WriteLine(message);
+              //  Console.WriteLine(message);
                 Log.LogIt(EventType.Create, e.FullPath);
                 //EventSender.GetInstance().ProcessMessage(message);
             }
@@ -202,6 +203,7 @@ namespace WinOwl
                 }
                 listofwatcher.Clear();
             }
+            MessageBox.Show("All services are stop monitoring.","Alert",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         #endregion
     }

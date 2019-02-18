@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
 using WinOwl.Network;
+using System.Windows.Forms;
 
 namespace WinOwl
 {
@@ -15,8 +16,8 @@ namespace WinOwl
     /// </summary>
     public class FolderWatcher
     {
-        private static Timer timer = null;
-        private static Timer timer2 = null;
+        private static System.Threading.Timer timer = null;
+        private static System.Threading.Timer timer2 = null;
         private List<String> folders = new List<String>();
         private Stack<String> visitedFolders = new Stack<String>();
 
@@ -63,11 +64,8 @@ namespace WinOwl
                     {
                         f.Start();
                     }
-                    catch 
-                    {
-                        //try remove it..
-                        
-                    }
+                    catch (Exception exc) { MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
                 }
 
             }

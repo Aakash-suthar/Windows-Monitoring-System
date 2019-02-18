@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.UsernameTextbox = new MetroFramework.Controls.MetroTextBox();
             this.PasswordTextbox = new MetroFramework.Controls.MetroTextBox();
+            this.LoginNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // metroButton1
@@ -131,6 +133,12 @@
             this.PasswordTextbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.PasswordTextbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // LoginNotify
+            // 
+            this.LoginNotify.Text = "notifyIcon1";
+            this.LoginNotify.Visible = true;
+            this.LoginNotify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,5 +168,6 @@
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroTextBox UsernameTextbox;
         private MetroFramework.Controls.MetroTextBox PasswordTextbox;
+        private System.Windows.Forms.NotifyIcon LoginNotify;
     }
 }

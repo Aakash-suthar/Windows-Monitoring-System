@@ -29,16 +29,26 @@ namespace WinOwl
             if(UsernameTextbox.Text == "smit" && PasswordTextbox.Text == "smit123")
             {
                 Hide();
-                Main f = new Main();
-                f.ShowDialog();
-                //Dispose();
+                if (Main.MainForm == null)
+                {
+                    Main f = new Main();
+                    f.Show();
+                }
+                else { Main.MainForm.Show(); }
             }
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            Hide();
-            Dispose();
+            if (Main.MainForm == null)
+            {
+                Dispose();
+            }
+            else
+            {
+                LoginNotify.Visible = true;
+                Hide();
+            }
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -51,7 +61,13 @@ namespace WinOwl
            // }
         }
 
-   
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Login.Form1Instance.Show();
+            LoginNotify.Visible = false;
+        }
+
+
         //private static void SetStartup()
         //{
         //    //Set the application to run at startup
