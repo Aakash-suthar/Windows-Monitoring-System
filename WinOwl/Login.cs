@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,10 @@ namespace WinOwl
 
         private void Login_Load(object sender, EventArgs e)
         {
+            if (File.Exists(Log.RecentFile))
+            {
+                MessageBox.Show("Login to save file.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
             //if (Convert.ToInt32(Registry.GetValue(StartupKey, StartupValue, 0)) == 0)
             //{
                // RegistryKey key = Registry.CurrentUser.OpenSubKey(StartupKey, true);

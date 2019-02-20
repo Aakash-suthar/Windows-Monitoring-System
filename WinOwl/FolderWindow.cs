@@ -48,13 +48,14 @@ namespace WinOwl
                 if (!visitedFolders.Peek().Equals(folder.LocationURL))
                 {
                     visitedFolders.Push(folder.LocationURL);
-                    
-                    String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                                     + folder.LocationName + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                                     + folder.LocationURL + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                                     + FolderMonitor.FOLDER_VIEW + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                                     + DateTime.Now;
-                    Log.LogIt(EventType.Folder, message);
+
+                    //String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+                    //                 + folder.LocationName + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+                    //                 + folder.LocationURL + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                    //                 + FolderMonitor.FOLDER_VIEW + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+                    //                 + DateTime.Now;
+                    String message = folder.LocationName;
+                    //FolderLog.LogIt( message);
                     //EventSender.GetInstance().ProcessMessage(message);
 
                 }
@@ -63,17 +64,18 @@ namespace WinOwl
             else
             {//can get here once - at folder start up
                 visitedFolders.Push(folder.LocationURL);
-               
-                String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                                 + folder.LocationName + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                                 + folder.LocationURL + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                                 + FolderMonitor.FOLDER_VIEW + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                                 + DateTime.Now;
 
-                Log.LogIt(EventType.Folder, message);
-              //  EventSender.GetInstance().ProcessMessage(message);
-                
-                
+                //String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+                //                 + folder.LocationName + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+                //                 + folder.LocationURL + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //                 + FolderMonitor.FOLDER_VIEW + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+                //                 + DateTime.Now;
+                String message = folder.LocationName;
+
+                //FolderLog.LogIt(message);
+                //  EventSender.GetInstance().ProcessMessage(message);
+
+
             }
         }
     }

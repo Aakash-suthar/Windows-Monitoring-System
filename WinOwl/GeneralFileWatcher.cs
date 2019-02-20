@@ -93,10 +93,10 @@ namespace WinOwl
                              + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
                              + FileMonitor.CHANGE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
                              + DateTime.Now;
-                message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CHANGE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
-
+                //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CHANGE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+                //message = e.FullPath;
                // Console.WriteLine(message);
-                Log.LogIt(EventType.Change, e.FullPath);
+                Log.LogIt(EventType.Change, e.FullPath,"");
 
                 //EventSender.GetInstance().ProcessMessage(message);
             }
@@ -122,10 +122,10 @@ namespace WinOwl
                              + FileMonitor.DELETE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
                              + DateTime.Now;
 
-                message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.DELETE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+               // message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.DELETE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
                 //Console.WriteLine(message);
-                Log.LogIt(EventType.Delete, e.FullPath);
+                Log.LogIt(EventType.Delete, e.FullPath,"");
 
                 //EventSender.GetInstance().ProcessMessage(message);
             }
@@ -154,10 +154,10 @@ namespace WinOwl
                              + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + e.OldFullPath
                              + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + e.OldName;
 
-                message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.RENAME_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+                //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.RENAME_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
                // Console.WriteLine(message);
-                Log.LogIt(EventType.Rename, e.FullPath+"+"+e.OldFullPath+"+"+DateTime.Now.Day.ToString());
+                Log.LogIt(EventType.Rename,e.OldFullPath,e.FullPath);
 
                 //EventSender.GetInstance().ProcessMessage(message);
             }
@@ -181,10 +181,10 @@ namespace WinOwl
                              + FileMonitor.CREATE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
                              + DateTime.Now;
 
-                message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CREATE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+                //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CREATE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
               //  Console.WriteLine(message);
-                Log.LogIt(EventType.Create, e.FullPath);
+                Log.LogIt(EventType.Create, e.FullPath,"");
                 //EventSender.GetInstance().ProcessMessage(message);
             }
 

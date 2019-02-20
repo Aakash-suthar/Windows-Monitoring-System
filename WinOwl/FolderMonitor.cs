@@ -38,7 +38,7 @@ namespace WinOwl
         public void StartMonitoring()
         {
             Watch();
-            FolderWatcher.GetInstance().Start();
+           // FolderWatcher.GetInstance().Start();
         }
 
         /// <summary>
@@ -93,14 +93,15 @@ namespace WinOwl
         private void watcher_Renamed(object sender, RenamedEventArgs e)
         {
 
-            String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 FOLDER_RENAME + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + //still need old name/path
-                                 DateTime.Now;
-            message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_RENAME + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+            //String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+            //                     e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+            //                     e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+            //                     FOLDER_RENAME + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + //still need old name/path
+            //                     DateTime.Now;
+            String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_RENAME + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
-            Console.WriteLine(message);
+            // Console.WriteLine(message);
+            FolderLog.LogIt( message);
 
             //EventSender.GetInstance().ProcessMessage(message);
         }
@@ -112,14 +113,15 @@ namespace WinOwl
         /// <param name="e">event arguments</param>
         private void watcher_Deleted(object sender, FileSystemEventArgs e)
         {
-            String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 FOLDER_DELETION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 DateTime.Now;
-            message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_DELETION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+            //String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+            //                     e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+            //                     e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+            //                     FOLDER_DELETION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+            //                     DateTime.Now;
+            String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_DELETION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
-            Console.WriteLine(message);
+            //Console.WriteLine(message);
+            FolderLog.LogIt(message);
 
             //EventSender.GetInstance().ProcessMessage(message);
         }
@@ -133,15 +135,27 @@ namespace WinOwl
         {
             if (Directory.Exists(e.FullPath))
             {
-                String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 FOLDER_CREATE + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
-                                 DateTime.Now;
+                FileSystemWatcher f = new FileSystemWatcher();
+                f.Path = Directory.GetDirectoryRoot(e.FullPath); //start from the root (Top - Down)
 
-                message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_CREATE + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+                f.IncludeSubdirectories = true;   //recurse watch
+                f.EnableRaisingEvents = true;     //allow events to be notified..
 
-                Console.WriteLine(message);
+                f.Filter = "*.*";                 //watch every type of file..
+                f.Created += new FileSystemEventHandler(watcher_Created);
+                f.Renamed += new RenamedEventHandler(watcher_Renamed);
+                f.Deleted += new FileSystemEventHandler(watcher_Deleted);
+                listofwatcherfolder.Add(f);
+                //String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+                //                 e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+                //                 e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+                //                 FOLDER_CREATE + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
+                //                 DateTime.Now;
+
+                String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_CREATE + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+                FolderLog.LogIt(message);
+
+                //Console.WriteLine(message);
 
                 //EventSender.GetInstance().ProcessMessage(message);
             }

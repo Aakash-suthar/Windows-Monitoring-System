@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Threading;
 using WinOwl.Network;
 using ActivityMonitoring;
+using System.Windows.Forms;
 
 namespace WinOwl
 {
@@ -19,7 +20,7 @@ namespace WinOwl
     {
         private List<String> runningProgramList = new List<String>();
         private List<Process> procList;
-        private Timer timer = null;
+        private System.Threading.Timer timer = null;
 
         private static ProgramWatcher instance = new ProgramWatcher();
         
@@ -53,7 +54,7 @@ namespace WinOwl
 
                 if (P.MainWindowTitle.Length > 0)
                 {
-                    try
+                   try
                     {
                         if (!runningProgramList.Contains(P.ProcessName))
                         {
@@ -66,21 +67,23 @@ namespace WinOwl
                             }
                             catch (Exception e)
                             {
+                                MessageBox.Show(e.Message, "Program Error");
 
                             }//swallow
 
-                            String message = ResourceIdentifiers.PROGRAM_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                                             + P.ProcessName + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                                             + P.MainWindowTitle + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                                             + P.ToString() + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                                             + P.MainModule.FileName + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                                             + DateTime.Now;
-                            Log.LogIt(EventType.Program, message);
+                            //String message = ResourceIdentifiers.PROGRAM_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                            //                 + P.ProcessName + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                            //                 + P.MainWindowTitle + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                            //                 + P.ToString() + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                            //                 + P.MainModule.FileName + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                            //                 + DateTime.Now;
+                            String message = P.ProcessName;
+                            ProgramLog.LogIt(message);
                         }
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message);
+                        MessageBox.Show(e.Message,"Program Error");
                     }//swallow
 
                 }
@@ -96,7 +99,7 @@ namespace WinOwl
             procList = new List<Process>();
 
             TimerCallback timerDelegate = new TimerCallback(WatchProgram);
-            timer = new Timer(timerDelegate, null, 0, 1000);
+            timer = new System.Threading.Timer(timerDelegate, null, 0, 1000);
             timerDelegate.Invoke(new object());
         }
 

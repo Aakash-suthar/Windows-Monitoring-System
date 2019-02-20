@@ -58,15 +58,15 @@ namespace WinOwl
         {
             if (SlidePanel.Width==0)
             {
-                //SlidePanel.Visible = true;
+                SlidePanel.Visible = true;
                 SlidePanel.Width = panelwidth;
-                bunifuTransition1.ShowSync(SlidePanel);  
+              //  bunifuTransition1.ShowSync(SlidePanel);  
             }
             else {
                 //SlidePanel.Visible = false; 
                 //SlidePanel.Width = 0;
                 SlidePanel.Width = 0;
-                bunifuTransition1.HideSync(SlidePanel);
+               // bunifuFormFadeTransition1.ShowAsyc(SlidePanel);
                 SlidePanel.Visible = false;
 
             }
@@ -133,12 +133,14 @@ namespace WinOwl
         {
             try
             {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                Log.CreateFile = path + @"\CreateFileLog.tp";
-                Log.RenameFile = path + @"\RenameFileLog.tp";
-                Log.DeleteFile = path + @"\DeleteFileLog.tp";
-                Log.ChangeFile = path + @"\ChangeFileLog.tp";
-                Log.RecentFile = path + @"\RecentFileLog.tp";
+                //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                //Log.CreateFile = path + @"\CreateFileLog.xml";
+                //Log.RenameFile = path + @"\RenameFileLog.xml";
+                //Log.DeleteFile = path + @"\DeleteFileLog.xml";
+                //Log.ChangeFile = path + @"\ChangeFileLog.xml";
+                //Log.RecentFile = path + @"\RecentFileLog.xml";
+                //Log.ProgramFile = path + @"\ProgramFileLog.xml";
+                //Log.FolderFile = path + @"\FolderFileLog.xml";
                 Console.WriteLine(Log.CreateFile+Log.RenameFile+Log.DeleteFile+Log.RecentFile);
             }
             catch(Exception exc) { MessageBox.Show(exc.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
@@ -338,6 +340,15 @@ namespace WinOwl
             }
         }
 
+        private void SavefileButton_Click(object sender, EventArgs e)
+        {
+            if (Save.SaveForm == null)
+            {
+                Save s = new Save();
+                s.Show();
+            }
+            else { Save.SaveForm.Show(); }
+        }
 
         private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)
         {

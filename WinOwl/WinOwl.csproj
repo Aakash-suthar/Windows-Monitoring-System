@@ -50,8 +50,9 @@
     <Reference Include="ActivityMonitoring">
       <HintPath>..\..\..\..\Documents\AKASH\activity-monitor-master\activity-monitor-master\Polling\build\ActivityMonitoring.dll</HintPath>
     </Reference>
-    <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\Desktop\Bunifu_UI_v1.5.3.dll</HintPath>
+    <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="Interop.SHDocVw">
       <HintPath>..\..\..\..\Documents\AKASH\activity-monitor-master\activity-monitor-master\Polling\build\Interop.SHDocVw.dll</HintPath>
@@ -93,6 +94,7 @@
     <Compile Include="EventMessage.cs" />
     <Compile Include="EventType.cs" />
     <Compile Include="FileMonitor.cs" />
+    <Compile Include="FolderLog.cs" />
     <Compile Include="FolderMonitor.cs" />
     <Compile Include="FolderWatcher.cs" />
     <Compile Include="FolderWindow.cs" />
@@ -116,9 +118,16 @@
     <Compile Include="Network\ServerInformation.cs" />
     <Compile Include="Program - Copy.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramLog.cs" />
     <Compile Include="ProgramWatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceIdentifiers.cs" />
+    <Compile Include="Save.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Save.Designer.cs">
+      <DependentUpon>Save.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="BlurPanel.resx">
       <DependentUpon>BlurPanel.cs</DependentUpon>
@@ -139,6 +148,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Save.resx">
+      <DependentUpon>Save.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

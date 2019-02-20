@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
             this.ProgramButton = new MetroFramework.Controls.MetroButton();
@@ -56,7 +55,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.SavefileButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel4.SuspendLayout();
             this.metroPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -70,7 +69,6 @@
             this.metroPanel4.Controls.Add(this.ProgramButton);
             this.metroPanel4.Controls.Add(this.label4);
             this.metroPanel4.Controls.Add(this.metroButton3);
-            this.bunifuTransition1.SetDecoration(this.metroPanel4, BunifuAnimatorNS.DecorationType.None);
             this.metroPanel4.HorizontalScrollbarBarColor = true;
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel4.HorizontalScrollbarSize = 10;
@@ -85,7 +83,6 @@
             // ProgramButton
             // 
             this.ProgramButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.ProgramButton, BunifuAnimatorNS.DecorationType.None);
             this.ProgramButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.ProgramButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.ProgramButton.Location = new System.Drawing.Point(69, 240);
@@ -99,7 +96,6 @@
             // 
             // label4
             // 
-            this.bunifuTransition1.SetDecoration(this.label4, BunifuAnimatorNS.DecorationType.None);
             this.label4.Font = new System.Drawing.Font("Lucida Calligraphy", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(48, 138);
@@ -112,7 +108,6 @@
             // metroButton3
             // 
             this.metroButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.metroButton3, BunifuAnimatorNS.DecorationType.None);
             this.metroButton3.Enabled = false;
             this.metroButton3.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton3.FontWeight = MetroFramework.MetroButtonWeight.Regular;
@@ -133,7 +128,6 @@
             this.metroPanel3.Controls.Add(this.FolderButton);
             this.metroPanel3.Controls.Add(this.label3);
             this.metroPanel3.Controls.Add(this.metroButton2);
-            this.bunifuTransition1.SetDecoration(this.metroPanel3, BunifuAnimatorNS.DecorationType.None);
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 10;
@@ -149,7 +143,6 @@
             // FolderButton
             // 
             this.FolderButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.FolderButton, BunifuAnimatorNS.DecorationType.None);
             this.FolderButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.FolderButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.FolderButton.Location = new System.Drawing.Point(59, 240);
@@ -163,7 +156,6 @@
             // 
             // label3
             // 
-            this.bunifuTransition1.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Lucida Calligraphy", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(45, 138);
@@ -178,7 +170,6 @@
             this.metroButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.metroButton2, BunifuAnimatorNS.DecorationType.None);
             this.metroButton2.Enabled = false;
             this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton2.FontWeight = MetroFramework.MetroButtonWeight.Regular;
@@ -198,7 +189,6 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Lucida Calligraphy", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label2.Location = new System.Drawing.Point(0, 1);
@@ -215,13 +205,12 @@
             // 
             this.AnimateButton.BackColor = System.Drawing.Color.Transparent;
             this.AnimateButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.AnimateButton, BunifuAnimatorNS.DecorationType.None);
             this.AnimateButton.Location = new System.Drawing.Point(12, 12);
             this.AnimateButton.Name = "AnimateButton";
             this.AnimateButton.Size = new System.Drawing.Size(75, 23);
             this.AnimateButton.TabIndex = 2;
             this.AnimateButton.TabStop = false;
-            this.AnimateButton.Text = "Animate";
+            this.AnimateButton.Text = "Menu";
             this.AnimateButton.UseCustomBackColor = true;
             this.AnimateButton.UseSelectable = true;
             this.AnimateButton.Click += new System.EventHandler(this.AnimateButton_Click);
@@ -231,7 +220,6 @@
             this.panel1.Controls.Add(this.FileButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.metroButton1);
-            this.bunifuTransition1.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
             this.panel1.Location = new System.Drawing.Point(20, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(288, 329);
@@ -240,7 +228,6 @@
             // FileButton
             // 
             this.FileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.FileButton, BunifuAnimatorNS.DecorationType.None);
             this.FileButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.FileButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.FileButton.Location = new System.Drawing.Point(62, 240);
@@ -254,7 +241,6 @@
             // 
             // label1
             // 
-            this.bunifuTransition1.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
             this.label1.Font = new System.Drawing.Font("Lucida Calligraphy", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(39, 138);
@@ -269,7 +255,6 @@
             this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.metroButton1, BunifuAnimatorNS.DecorationType.None);
             this.metroButton1.Enabled = false;
             this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton1.FontWeight = MetroFramework.MetroButtonWeight.Regular;
@@ -287,24 +272,23 @@
             // SlidePanel
             // 
             this.SlidePanel.BackColor = System.Drawing.Color.CadetBlue;
+            this.SlidePanel.Controls.Add(this.SavefileButton);
             this.SlidePanel.Controls.Add(this.LogoutButton);
             this.SlidePanel.Controls.Add(this.ExitButton);
             this.SlidePanel.Controls.Add(this.AboutButton);
             this.SlidePanel.Controls.Add(this.metroButton4);
-            this.bunifuTransition1.SetDecoration(this.SlidePanel, BunifuAnimatorNS.DecorationType.None);
             this.SlidePanel.Location = new System.Drawing.Point(0, 1);
             this.SlidePanel.Name = "SlidePanel";
-            this.SlidePanel.Size = new System.Drawing.Size(0, 526);
+            this.SlidePanel.Size = new System.Drawing.Size(351, 526);
             this.SlidePanel.TabIndex = 14;
             // 
             // LogoutButton
             // 
             this.LogoutButton.BackColor = System.Drawing.Color.Transparent;
             this.LogoutButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.LogoutButton, BunifuAnimatorNS.DecorationType.None);
             this.LogoutButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.LogoutButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.LogoutButton.Location = new System.Drawing.Point(82, 198);
+            this.LogoutButton.Location = new System.Drawing.Point(98, 233);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(125, 42);
             this.LogoutButton.Style = MetroFramework.MetroColorStyle.Teal;
@@ -322,10 +306,9 @@
             // 
             this.ExitButton.BackColor = System.Drawing.Color.Transparent;
             this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.ExitButton, BunifuAnimatorNS.DecorationType.None);
             this.ExitButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.ExitButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.ExitButton.Location = new System.Drawing.Point(63, 264);
+            this.ExitButton.Location = new System.Drawing.Point(82, 301);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(159, 42);
             this.ExitButton.Style = MetroFramework.MetroColorStyle.Teal;
@@ -343,10 +326,9 @@
             // 
             this.AboutButton.BackColor = System.Drawing.Color.Transparent;
             this.AboutButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.AboutButton, BunifuAnimatorNS.DecorationType.None);
             this.AboutButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.AboutButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.AboutButton.Location = new System.Drawing.Point(82, 136);
+            this.AboutButton.Location = new System.Drawing.Point(98, 163);
             this.AboutButton.Name = "AboutButton";
             this.AboutButton.Size = new System.Drawing.Size(125, 42);
             this.AboutButton.Style = MetroFramework.MetroColorStyle.Orange;
@@ -364,7 +346,6 @@
             // 
             this.metroButton4.BackColor = System.Drawing.Color.Transparent;
             this.metroButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.metroButton4, BunifuAnimatorNS.DecorationType.None);
             this.metroButton4.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton4.Location = new System.Drawing.Point(226, 11);
             this.metroButton4.Name = "metroButton4";
@@ -379,7 +360,6 @@
             // StartButton
             // 
             this.StartButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.StartButton, BunifuAnimatorNS.DecorationType.None);
             this.StartButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.StartButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.StartButton.Location = new System.Drawing.Point(16, 379);
@@ -394,7 +374,6 @@
             // StopButton
             // 
             this.StopButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.StopButton, BunifuAnimatorNS.DecorationType.None);
             this.StopButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.StopButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.StopButton.Location = new System.Drawing.Point(170, 379);
@@ -409,9 +388,8 @@
             // 
             this.CloseButton.BackColor = System.Drawing.Color.Transparent;
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition1.SetDecoration(this.CloseButton, BunifuAnimatorNS.DecorationType.None);
             this.CloseButton.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.CloseButton.Location = new System.Drawing.Point(1164, 22);
+            this.CloseButton.Location = new System.Drawing.Point(914, 29);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(43, 23);
             this.CloseButton.TabIndex = 6;
@@ -432,10 +410,9 @@
             // treeView1
             // 
             this.treeView1.CheckBoxes = true;
-            this.bunifuTransition1.SetDecoration(this.treeView1, BunifuAnimatorNS.DecorationType.None);
-            this.treeView1.Location = new System.Drawing.Point(16, 30);
+            this.treeView1.Location = new System.Drawing.Point(3, 30);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(264, 329);
+            this.treeView1.Size = new System.Drawing.Size(268, 329);
             this.treeView1.TabIndex = 18;
             // 
             // panel3
@@ -443,32 +420,30 @@
             this.panel3.Controls.Add(this.treeView1);
             this.panel3.Controls.Add(this.StartButton);
             this.panel3.Controls.Add(this.StopButton);
-            this.bunifuTransition1.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
-            this.panel3.Location = new System.Drawing.Point(927, 66);
+            this.panel3.Location = new System.Drawing.Point(945, 73);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(292, 449);
+            this.panel3.Size = new System.Drawing.Size(274, 433);
             this.panel3.TabIndex = 19;
             // 
-            // bunifuTransition1
+            // SavefileButton
             // 
-            this.bunifuTransition1.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
-            this.bunifuTransition1.Cursor = null;
-            animation4.AnimateOnlyDifferences = true;
-            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
-            animation4.LeafCoeff = 0F;
-            animation4.MaxTime = 1F;
-            animation4.MinTime = 0F;
-            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
-            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
-            animation4.MosaicSize = 0;
-            animation4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            animation4.RotateCoeff = 0F;
-            animation4.RotateLimit = 0F;
-            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
-            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
-            animation4.TimeCoeff = 0F;
-            animation4.TransparencyCoeff = 0F;
-            this.bunifuTransition1.DefaultAnimation = animation4;
+            this.SavefileButton.BackColor = System.Drawing.Color.Transparent;
+            this.SavefileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SavefileButton.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.SavefileButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.SavefileButton.Location = new System.Drawing.Point(98, 98);
+            this.SavefileButton.Name = "SavefileButton";
+            this.SavefileButton.Size = new System.Drawing.Size(125, 42);
+            this.SavefileButton.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SavefileButton.TabIndex = 7;
+            this.SavefileButton.TabStop = false;
+            this.SavefileButton.Text = "Save Files";
+            this.SavefileButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.SavefileButton.UseCustomBackColor = true;
+            this.SavefileButton.UseCustomForeColor = true;
+            this.SavefileButton.UseSelectable = true;
+            this.SavefileButton.UseStyleColors = true;
+            this.SavefileButton.Click += new System.EventHandler(this.SavefileButton_Click);
             // 
             // Main
             // 
@@ -486,7 +461,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.metroPanel4);
             this.Controls.Add(this.metroPanel3);
-            this.bunifuTransition1.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.DarkCyan;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -532,7 +506,7 @@
         private MetroFramework.Controls.MetroButton ProgramButton;
         private MetroFramework.Controls.MetroButton FolderButton;
         private MetroFramework.Controls.MetroButton FileButton;
-        private BunifuAnimatorNS.BunifuTransition bunifuTransition1;
+        private MetroFramework.Controls.MetroButton SavefileButton;
     }
 }
 
