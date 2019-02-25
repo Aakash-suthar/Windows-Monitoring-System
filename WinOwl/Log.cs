@@ -11,6 +11,7 @@ namespace WinOwl
 {
     public static class Log
     {
+        private static int ID = 0;
         private static string filename = null;
 
         #region File names
@@ -42,23 +43,22 @@ namespace WinOwl
                         using (XmlWriter xmlWriter = XmlWriter.Create(filename, xmlWriterSettings))
                         {
                             xmlWriter.WriteStartDocument();
-                             if (eventtype == EventType.Rename)
+                            xmlWriter.WriteStartElement("Files");
+                            xmlWriter.WriteStartElement("File");
+                        xmlWriter.WriteAttributeString("ID",ID.ToString());
+                        if (eventtype == EventType.Rename)
                             {
-                                xmlWriter.WriteStartElement("Files");
-                                xmlWriter.WriteStartElement("File");
+                            
                                 xmlWriter.WriteElementString("Filename", oldfilename);
                                 xmlWriter.WriteElementString("NewFilename", newfilename);
-
-                            }
-                            else
+                        }
+                        else
                             {
-                                xmlWriter.WriteStartElement("Files");
-                                xmlWriter.WriteStartElement("File");
                                 xmlWriter.WriteElementString("Filename", oldfilename);
-
-                            }
-                            xmlWriter.WriteElementString("DateTime", DateTime.Now.ToString());
-                            xmlWriter.WriteEndElement();
+                        }
+                        xmlWriter.WriteElementString("DateTime", DateTime.Now.ToString());
+                        xmlWriter.WriteElementString("Delete", true.ToString());
+                        xmlWriter.WriteEndElement();
                             xmlWriter.WriteEndElement();
                             xmlWriter.WriteEndDocument();
                             xmlWriter.Flush();
@@ -75,10 +75,12 @@ namespace WinOwl
                         XElement root = xDocument.Element("Files");
                             root.Add(
                                new XElement("File",
+                               new XAttribute("ID",ID),
                                new XElement("Filename", oldfilename),
                                new XElement("NewFilename", newfilename),
-                               new XElement("DateTime", DateTime.Now.ToString())));
-                            xDocument.Save(RenameFile);
+                               new XElement("DateTime", DateTime.Now.ToString()),
+                               new XElement("Delete", true)));
+                               xDocument.Save(RenameFile);
                             //  xDocument = null;
                         }
                         else
@@ -88,9 +90,11 @@ namespace WinOwl
                         XElement root = xDocument.Element("Files");
                             root.Add(
                                new XElement("File",
+                               new XAttribute("ID", ID),
                                new XElement("Filename", oldfilename),
-                               new XElement("DateTime", DateTime.Now.ToString())));
-                            xDocument.Save(filename);
+                               new XElement("DateTime", DateTime.Now.ToString()),
+                               new XElement("Delete", true)));
+                               xDocument.Save(filename);
                             // xDocument = null;
                         }
 
@@ -107,6 +111,7 @@ namespace WinOwl
                         xmlWriter.WriteStartDocument();
                         xmlWriter.WriteStartElement("AllFiles");
                         xmlWriter.WriteStartElement("File");
+                        xmlWriter.WriteAttributeString("ID",ID.ToString());
                         xmlWriter.WriteElementString("OldFilename", oldfilename);
                         xmlWriter.WriteElementString("NewFilename", newfilename);
                         xmlWriter.WriteElementString("EventType", eventtype.ToString());
@@ -124,6 +129,7 @@ namespace WinOwl
                     XElement root = xDocument.Element("AllFiles");
                   root.Add(
                        new XElement("File",
+                       new XAttribute("ID",ID),
                        new XElement("OldFilename", oldfilename),
                        new XElement("NewFilename", newfilename),
                        new XElement("EventType", eventtype.ToString()),

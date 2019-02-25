@@ -15,11 +15,11 @@ namespace WinOwl
         {
             SaveForm = this;
             InitializeComponent();
-            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-            dgvCmb.ValueType = typeof(bool);
-            dgvCmb.Name = "Save";
-            dgvCmb.HeaderText = "SaveFile";
-            dataGridView1.Columns.Add(dgvCmb);
+            //DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+            //dgvCmb.ValueType = typeof(bool);
+            //dgvCmb.Name = "Save";
+            //dgvCmb.HeaderText = "SaveFile";
+            //dataGridView1.Columns.Add(dgvCmb);
 
         }
 
@@ -39,11 +39,11 @@ namespace WinOwl
             DataSet dataSet = new DataSet();
             dataSet.ReadXml(Log.DeleteFile);
             dataGridView1.DataSource = dataSet.Tables[0];
-            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-            dgvCmb.ValueType = typeof(bool);
-            dgvCmb.Name = "Save";
-            dgvCmb.HeaderText = "SaveFile";
-            dataGridView1.Columns.Add(dgvCmb);
+            //DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+            //dgvCmb.ValueType = typeof(bool);
+            //dgvCmb.Name = "Save";
+            //dgvCmb.HeaderText = "SaveFile";
+            //dataGridView1.Columns.Add(dgvCmb);
 
         }
     }

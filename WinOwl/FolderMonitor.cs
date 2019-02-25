@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using ActivityMonitoring;
-using WinOwl.Network;
 
 namespace WinOwl
 {
@@ -98,10 +94,10 @@ namespace WinOwl
             //                     e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
             //                     FOLDER_RENAME + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + //still need old name/path
             //                     DateTime.Now;
-            String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_RENAME + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
-
+            //String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_RENAME + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+            
             // Console.WriteLine(message);
-            FolderLog.LogIt( message);
+          //  FolderLog.LogIt( message);
 
             //EventSender.GetInstance().ProcessMessage(message);
         }
@@ -118,10 +114,10 @@ namespace WinOwl
             //                     e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
             //                     FOLDER_DELETION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
             //                     DateTime.Now;
-            String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_DELETION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+          //  String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_DELETION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
             //Console.WriteLine(message);
-            FolderLog.LogIt(message);
+        //    FolderLog.LogIt(message);
 
             //EventSender.GetInstance().ProcessMessage(message);
         }
@@ -152,8 +148,8 @@ namespace WinOwl
                 //                 FOLDER_CREATE + Constants.SPACE + Constants.SPLITTER + Constants.SPACE +
                 //                 DateTime.Now;
 
-                String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_CREATE + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
-                FolderLog.LogIt(message);
+              //  String message = ResourceIdentifiers.FOLDER_IDENTIFIER + Constants.SPACE + FOLDER_CREATE + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
+              //  FolderLog.LogIt(message);
 
                 //Console.WriteLine(message);
 

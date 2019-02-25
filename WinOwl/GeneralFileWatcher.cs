@@ -1,5 +1,4 @@
-﻿using ActivityMonitoring;
-using System;
+﻿
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -88,11 +87,11 @@ namespace WinOwl
             {
             //   Console.WriteLine(ext);
             
-            String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                             + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                             + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                             + FileMonitor.CHANGE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-                             + DateTime.Now;
+            //String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+            //                 + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+            //                 + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+            //                 + FileMonitor.CHANGE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
+            //                 + DateTime.Now;
                 //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CHANGE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
                 //message = e.FullPath;
                // Console.WriteLine(message);
@@ -116,11 +115,11 @@ namespace WinOwl
             {
               //  Console.WriteLine(ext);
 
-                String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + FileMonitor.DELETE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + DateTime.Now;
+                //String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //             + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //             + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //             + FileMonitor.DELETE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //             + DateTime.Now;
 
                // message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.DELETE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
@@ -146,13 +145,13 @@ namespace WinOwl
             {
               //  Console.WriteLine(ext);
 
-                String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + FileMonitor.RENAME_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + DateTime.Now  // also record old path/name
-                             + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + e.OldFullPath
-                             + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + e.OldName;
+                //String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //             + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //             + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //             + FileMonitor.RENAME_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                //             + DateTime.Now  // also record old path/name
+                //             + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + e.OldFullPath
+                //             + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + e.OldName;
 
                 //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.RENAME_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
@@ -175,15 +174,16 @@ namespace WinOwl
 
             if (extension.Any(ext.Equals))
             {
-                        String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + FileMonitor.CREATE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                             + DateTime.Now;
+                        //String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                        //     + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                        //     + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                        //     + FileMonitor.CREATE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
+                        //     + DateTime.Now;
 
                 //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CREATE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
 
               //  Console.WriteLine(message);
+              
                 Log.LogIt(EventType.Create, e.FullPath,"");
                 //EventSender.GetInstance().ProcessMessage(message);
             }
