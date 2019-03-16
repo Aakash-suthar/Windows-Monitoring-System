@@ -133,14 +133,14 @@ namespace WinOwl
         {
             try
             {
-                //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                //Log.CreateFile = path + @"\CreateFileLog.xml";
-                //Log.RenameFile = path + @"\RenameFileLog.xml";
-                //Log.DeleteFile = path + @"\DeleteFileLog.xml";
-                //Log.ChangeFile = path + @"\ChangeFileLog.xml";
-                //Log.RecentFile = path + @"\RecentFileLog.xml";
-                //Log.ProgramFile = path + @"\ProgramFileLog.xml";
-                //Log.FolderFile = path + @"\FolderFileLog.xml";
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                Log.CreateFile = path + @"\CreateFileLog.xml";
+                Log.RenameFile = path + @"\RenameFileLog.xml";
+                Log.DeleteFile = path + @"\DeleteFileLog.xml";
+                Log.ChangeFile = path + @"\ChangeFileLog.xml";
+                Log.RecentFile = path + @"\RecentFileLog.xml";
+                ProgramLog.ProgramFile = path + @"\ProgramFileLog.xml";
+                FolderLog.FolderFile = path + @"\FolderFileLog.xml";
                 Console.WriteLine(Log.CreateFile+Log.RenameFile+Log.DeleteFile+Log.RecentFile);
             }
             catch(Exception exc) { MessageBox.Show(exc.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
@@ -348,6 +348,16 @@ namespace WinOwl
                 s.Show();
             }
             else { Save.SaveForm.Show(); }
+        }
+
+        private void LogButton_Click(object sender, EventArgs e)
+        {
+            if (LogForm.LogForm1 == null)
+            {
+                LogForm l = new LogForm();
+                l.Show();
+            }
+            else LogForm.LogForm1.Show();
         }
 
         private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)

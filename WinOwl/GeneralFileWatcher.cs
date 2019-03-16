@@ -82,22 +82,11 @@ namespace WinOwl
         /// <param name="e">event arguments</param>
         private static void watcher_Changed(object sender, FileSystemEventArgs e)
         {
-             string ext = Path.GetExtension(e.FullPath); 
-            if (extension.Any(ext.Equals))
+            if (!(e.FullPath.Contains("RECYCLE")))
             {
-            //   Console.WriteLine(ext);
-            
-            //String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-            //                 + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-            //                 + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-            //                 + FileMonitor.CHANGE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE 
-            //                 + DateTime.Now;
-                //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CHANGE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
-                //message = e.FullPath;
-               // Console.WriteLine(message);
-                Log.LogIt(EventType.Change, e.FullPath,"");
-
-                //EventSender.GetInstance().ProcessMessage(message);
+                string ext = Path.GetExtension(e.FullPath);
+                if (extension.Any(ext.Equals))
+                    Log.LogIt(EventType.Change, e.FullPath, "");
             }
 
         }
@@ -109,24 +98,10 @@ namespace WinOwl
         /// <param name="e">event arguments</param>
         private static void watcher_Deleted(object sender, FileSystemEventArgs e)
         {
-            string ext = Path.GetExtension(e.FullPath);
-  
-            if (extension.Any(ext.Equals))
+            if (!(e.FullPath.Contains("RECYCLE")))
             {
-              //  Console.WriteLine(ext);
-
-                //String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                //             + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                //             + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                //             + FileMonitor.DELETE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                //             + DateTime.Now;
-
-               // message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.DELETE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
-
-                //Console.WriteLine(message);
-                Log.LogIt(EventType.Delete, e.FullPath,"");
-
-                //EventSender.GetInstance().ProcessMessage(message);
+                string ext = Path.GetExtension(e.FullPath);
+                if (extension.Any(ext.Equals))  Log.LogIt(EventType.Delete, e.FullPath, "");
             }
 
         }
@@ -138,27 +113,10 @@ namespace WinOwl
         /// <param name="e">event arguments</param>
         private static void watcher_Renamed(object sender, RenamedEventArgs e)
         {
-
-            string ext = Path.GetExtension(e.FullPath);
- 
-            if (extension.Any(ext.Equals))
+            if (!(e.FullPath.Contains("RECYCLE")))
             {
-              //  Console.WriteLine(ext);
-
-                //String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                //             + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                //             + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                //             + FileMonitor.RENAME_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                //             + DateTime.Now  // also record old path/name
-                //             + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + e.OldFullPath
-                //             + Constants.SPACE + Constants.SPLITTER + Constants.SPACE + e.OldName;
-
-                //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.RENAME_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
-
-               // Console.WriteLine(message);
-                Log.LogIt(EventType.Rename,e.OldFullPath,e.FullPath);
-
-                //EventSender.GetInstance().ProcessMessage(message);
+                string ext = Path.GetExtension(e.FullPath);
+                if (extension.Any(ext.Equals)) Log.LogIt(EventType.Rename, e.OldFullPath, e.FullPath);
             }
 
         }
@@ -170,22 +128,10 @@ namespace WinOwl
         /// <param name="e">event arguments</param>
         private static void watcher_Created(object sender, FileSystemEventArgs e)
         {
-            string ext = Path.GetExtension(e.FullPath);
-
-            if (extension.Any(ext.Equals))
+            if (!(e.FullPath.Contains("RECYCLE")))
             {
-                        //String message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                        //     + e.Name + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                        //     + e.FullPath + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                        //     + FileMonitor.CREATE_ACTION + Constants.SPACE + Constants.SPLITTER + Constants.SPACE
-                        //     + DateTime.Now;
-
-                //message = ResourceIdentifiers.FILE_IDENTIFIER + Constants.SPACE + FileMonitor.CREATE_ACTION + Constants.SPACE + "Name " + e.Name + "Path " + e.FullPath;
-
-              //  Console.WriteLine(message);
-              
-                Log.LogIt(EventType.Create, e.FullPath,"");
-                //EventSender.GetInstance().ProcessMessage(message);
+                string ext = Path.GetExtension(e.FullPath);
+                if (extension.Any(ext.Equals)) Log.LogIt(EventType.Create, e.FullPath, "");
             }
 
         }

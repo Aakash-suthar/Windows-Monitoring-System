@@ -13,6 +13,7 @@ namespace WinOwl
     {
         private static int ID = 0;
         private static string filename = null;
+        private static bool newcreate = false;
 
         #region File names
         public static string CreateFile = @"C:\Users\vishal\Desktop\CreateFileLog.xml";
@@ -27,14 +28,27 @@ namespace WinOwl
 
         #region Log Methods
         public static void LogIt(EventType eventtype, string oldfilename,string newfilename) {
-
-            if (eventtype == EventType.Create) filename = CreateFile;
-            else if (eventtype == EventType.Rename) filename = RenameFile;
-            else if (eventtype == EventType.Change) filename = ChangeFile;
-            else if(EventType.Delete == eventtype) filename = DeleteFile;            
-                try
+            try
+            {
+                if (EventType.Create == eventtype)
                 {
-                    if (!File.Exists(filename))
+                    filename = CreateFile;
+                    if (oldfilename.IndexOf("new", StringComparison.OrdinalIgnoreCase) > 0) goto Next;
+                }
+                else if (eventtype == EventType.Rename)
+                {
+                    if (oldfilename.IndexOf("new", StringComparison.OrdinalIgnoreCase) > 0) { filename = CreateFile; eventtype = EventType.Create; newcreate = true; }
+                    else filename = RenameFile;
+                }
+                else if (eventtype == EventType.Change)
+                {
+                filename = ChangeFile;
+                if (oldfilename.IndexOf("new", StringComparison.OrdinalIgnoreCase) > 0) goto Next;
+              
+                }
+                else if (EventType.Delete == eventtype) filename = DeleteFile;
+
+                if (!File.Exists(filename))
                     {
                         XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
                         xmlWriterSettings.Indent = true;
@@ -47,17 +61,20 @@ namespace WinOwl
                             xmlWriter.WriteStartElement("File");
                         xmlWriter.WriteAttributeString("ID",ID.ToString());
                         if (eventtype == EventType.Rename)
+                        {
+
+                            xmlWriter.WriteElementString("Filename", oldfilename);
+                            xmlWriter.WriteElementString("NewFilename", newfilename);
+                        }
+                        else if(newcreate)
                             {
-                            
-                                xmlWriter.WriteElementString("Filename", oldfilename);
-                                xmlWriter.WriteElementString("NewFilename", newfilename);
+                                xmlWriter.WriteElementString("Filename", newfilename); newcreate = false;
                         }
                         else
-                            {
-                                xmlWriter.WriteElementString("Filename", oldfilename);
+                        {
+                            xmlWriter.WriteElementString("Filename", oldfilename);
                         }
                         xmlWriter.WriteElementString("DateTime", DateTime.Now.ToString());
-                        xmlWriter.WriteElementString("Delete", true.ToString());
                         xmlWriter.WriteEndElement();
                             xmlWriter.WriteEndElement();
                             xmlWriter.WriteEndDocument();
@@ -73,13 +90,12 @@ namespace WinOwl
                         XDocument xDocument = XDocument.Load(RenameFile);
                          
                         XElement root = xDocument.Element("Files");
-                            root.Add(
-                               new XElement("File",
-                               new XAttribute("ID",ID),
-                               new XElement("Filename", oldfilename),
-                               new XElement("NewFilename", newfilename),
-                               new XElement("DateTime", DateTime.Now.ToString()),
-                               new XElement("Delete", true)));
+                        root.Add(
+                           new XElement("File",
+                           new XAttribute("ID", ID),
+                           new XElement("Filename", oldfilename),
+                           new XElement("NewFilename", newfilename),
+                           new XElement("DateTime", DateTime.Now.ToString())));
                                xDocument.Save(RenameFile);
                             //  xDocument = null;
                         }
@@ -92,85 +108,83 @@ namespace WinOwl
                                new XElement("File",
                                new XAttribute("ID", ID),
                                new XElement("Filename", oldfilename),
-                               new XElement("DateTime", DateTime.Now.ToString()),
-                               new XElement("Delete", true)));
+                               new XElement("DateTime", DateTime.Now.ToString())));
                                xDocument.Save(filename);
                             // xDocument = null;
                         }
 
 
                     }
-           
-            if (!File.Exists(RecentFile))
-                {
-                    XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
-                    xmlWriterSettings.Indent = true;
-                    xmlWriterSettings.NewLineOnAttributes = true;
-                    using (XmlWriter xmlWriter = XmlWriter.Create(RecentFile, xmlWriterSettings))
-                    {
-                        xmlWriter.WriteStartDocument();
-                        xmlWriter.WriteStartElement("AllFiles");
-                        xmlWriter.WriteStartElement("File");
-                        xmlWriter.WriteAttributeString("ID",ID.ToString());
-                        xmlWriter.WriteElementString("OldFilename", oldfilename);
-                        xmlWriter.WriteElementString("NewFilename", newfilename);
-                        xmlWriter.WriteElementString("EventType", eventtype.ToString());
-                        xmlWriter.WriteElementString("DateTime", DateTime.Now.ToString());
-                        xmlWriter.WriteEndElement();
-                        xmlWriter.WriteEndElement();
-                        xmlWriter.WriteEndDocument();
-                        xmlWriter.Flush();
-                        xmlWriter.Close();
-                    }
-                }
-                else
-                {
-                    XDocument xDocument = XDocument.Load(RecentFile);
-                    XElement root = xDocument.Element("AllFiles");
-                  root.Add(
-                       new XElement("File",
-                       new XAttribute("ID",ID),
-                       new XElement("OldFilename", oldfilename),
-                       new XElement("NewFilename", newfilename),
-                       new XElement("EventType", eventtype.ToString()),
-                       new XElement("DateTime", DateTime.Now.ToString())));
-                    xDocument.Save(RecentFile);
-                    xDocument = null;
-                }
+                    if (!File.Exists(RecentFile))
+                        {
+                            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
+                            xmlWriterSettings.Indent = true;
+                            xmlWriterSettings.NewLineOnAttributes = true;
+                            using (XmlWriter xmlWriter = XmlWriter.Create(RecentFile, xmlWriterSettings))
+                            {
+                                xmlWriter.WriteStartDocument();
+                                xmlWriter.WriteStartElement("AllFiles");
+                                xmlWriter.WriteStartElement("File");
+                                xmlWriter.WriteAttributeString("ID",ID.ToString());
+                                xmlWriter.WriteElementString("OldFilename", oldfilename);
+                                xmlWriter.WriteElementString("NewFilename", newfilename);
+                                xmlWriter.WriteElementString("EventType", eventtype.ToString());
+                                xmlWriter.WriteElementString("DateTime", DateTime.Now.ToString());
+                                xmlWriter.WriteEndElement();
+                                xmlWriter.WriteEndElement();
+                                xmlWriter.WriteEndDocument();
+                                xmlWriter.Flush();
+                                xmlWriter.Close();
+                            }
+                        }
+                        else
+                        {
+                            XDocument xDocument = XDocument.Load(RecentFile);
+                            XElement root = xDocument.Element("AllFiles");
+                          root.Add(
+                               new XElement("File",
+                               new XAttribute("ID",ID),
+                               new XElement("OldFilename", oldfilename),
+                               new XElement("NewFilename", newfilename),
+                               new XElement("EventType", eventtype.ToString()),
+                               new XElement("DateTime", DateTime.Now.ToString())));
+                            xDocument.Save(RecentFile);
+                            xDocument = null;
+                        }
 
-                 filename = null;
-            }
+                         filename = null;
+                Next:
+                ID++;
+        }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message, "Not Recent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 filename = null; 
             }
 
-        }
+}
 
         public static void Renamereset() {
             if (File.Exists(RenameFile))
             {
-                var lines = File.ReadAllLines(RenameFile);
-                foreach (string line in lines)
+                XmlDocument doc = new XmlDocument();
+                doc.Load(RenameFile);
+                XmlNodeList fromselectors;
+                XmlElement root = doc.DocumentElement;
+                fromselectors = root.SelectNodes("File");
+                foreach (XmlNode n in fromselectors)
                 {
-                    string[] array = line.Split(new char[] { '+','+' }, 3);
-                    try
+                    if (File.Exists(n["NewFilename"].InnerText.ToString()))
                     {
-                        if (array[2] != null && array[2].Length > 0) { File.Delete(array[0]); }
-                        else { File.Move(array[0], array[1]); }
-                        
-
+                        //n["Filename"].InnerText.ToString();
+                        File.Move(n["NewFilename"].InnerText.ToString(),n["Filename"].InnerText.ToString());
                     }
-                    catch (Exception exc) { MessageBox.Show(exc.Message, "REname Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
             }
-            File.Delete(RenameFile);
+                //File.Delete(RenameFile);
         }
         public static void clear()
         {
-          //  if (File.Exists(CreateFile)) File.Delete(CreateFile);
-          //  if (File.Exists(RenameFile)) File.Delete(RenameFile);
             if (File.Exists(ChangeFile)) File.Delete(ChangeFile);
             if (File.Exists(DeleteFile)) File.Delete(DeleteFile);
             if (File.Exists(RecentFile)) File.Delete(RecentFile);
@@ -178,22 +192,26 @@ namespace WinOwl
 
         public static void Createreset()
         {
-
             if (File.Exists(CreateFile))
             {
-                var lines = File.ReadAllLines(CreateFile);
-                foreach (var line in lines)
+                XmlDocument doc = new XmlDocument();
+                doc.Load(CreateFile);
+                XmlNodeList fromselectors;
+                XmlElement root = doc.DocumentElement;
+                fromselectors = root.SelectNodes("File/Filename");
+
+                foreach (XmlNode n in fromselectors)
                 {
+
                     try
                     {
-                        if (File.Exists(line))
-                        { File.Delete(line); }
-                       // Console.WriteLine("delete success");
+                        if (File.Exists(n.InnerXml.ToString()))
+                        { File.Delete(n.InnerXml.ToString()); }
                     }
-                    catch (Exception exc) { MessageBox.Show(exc.Message, "CReate Eror", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    catch (Exception exc) { MessageBox.Show(exc.Message, "Delete Eror", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
+                File.Delete(CreateFile);
             }
-            File.Delete(CreateFile);
         }
 
         public static bool reset(){
@@ -203,7 +221,7 @@ namespace WinOwl
                 FolderMonitor.GetInstance().EndMonitoring();
                 ProgramWatcher.GetInstance().EndMonitoring();
                 Renamereset();
-                Createreset();
+            //    Createreset();
                 clear();
                 return true;
             }

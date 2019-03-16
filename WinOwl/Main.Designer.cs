@@ -45,6 +45,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.SlidePanel = new System.Windows.Forms.Panel();
+            this.LogButton = new MetroFramework.Controls.MetroButton();
+            this.SavefileButton = new MetroFramework.Controls.MetroButton();
             this.LogoutButton = new MetroFramework.Controls.MetroButton();
             this.ExitButton = new MetroFramework.Controls.MetroButton();
             this.AboutButton = new MetroFramework.Controls.MetroButton();
@@ -55,7 +57,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.SavefileButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel4.SuspendLayout();
             this.metroPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -272,6 +273,7 @@
             // SlidePanel
             // 
             this.SlidePanel.BackColor = System.Drawing.Color.CadetBlue;
+            this.SlidePanel.Controls.Add(this.LogButton);
             this.SlidePanel.Controls.Add(this.SavefileButton);
             this.SlidePanel.Controls.Add(this.LogoutButton);
             this.SlidePanel.Controls.Add(this.ExitButton);
@@ -282,13 +284,53 @@
             this.SlidePanel.Size = new System.Drawing.Size(351, 526);
             this.SlidePanel.TabIndex = 14;
             // 
+            // LogButton
+            // 
+            this.LogButton.BackColor = System.Drawing.Color.Transparent;
+            this.LogButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LogButton.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.LogButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.LogButton.Location = new System.Drawing.Point(98, 95);
+            this.LogButton.Name = "LogButton";
+            this.LogButton.Size = new System.Drawing.Size(125, 42);
+            this.LogButton.Style = MetroFramework.MetroColorStyle.Orange;
+            this.LogButton.TabIndex = 8;
+            this.LogButton.TabStop = false;
+            this.LogButton.Text = "Log";
+            this.LogButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.LogButton.UseCustomBackColor = true;
+            this.LogButton.UseCustomForeColor = true;
+            this.LogButton.UseSelectable = true;
+            this.LogButton.UseStyleColors = true;
+            this.LogButton.Click += new System.EventHandler(this.LogButton_Click);
+            // 
+            // SavefileButton
+            // 
+            this.SavefileButton.BackColor = System.Drawing.Color.Transparent;
+            this.SavefileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SavefileButton.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.SavefileButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.SavefileButton.Location = new System.Drawing.Point(98, 159);
+            this.SavefileButton.Name = "SavefileButton";
+            this.SavefileButton.Size = new System.Drawing.Size(125, 42);
+            this.SavefileButton.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SavefileButton.TabIndex = 7;
+            this.SavefileButton.TabStop = false;
+            this.SavefileButton.Text = "Save Files";
+            this.SavefileButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.SavefileButton.UseCustomBackColor = true;
+            this.SavefileButton.UseCustomForeColor = true;
+            this.SavefileButton.UseSelectable = true;
+            this.SavefileButton.UseStyleColors = true;
+            this.SavefileButton.Click += new System.EventHandler(this.SavefileButton_Click);
+            // 
             // LogoutButton
             // 
             this.LogoutButton.BackColor = System.Drawing.Color.Transparent;
             this.LogoutButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LogoutButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.LogoutButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.LogoutButton.Location = new System.Drawing.Point(98, 233);
+            this.LogoutButton.Location = new System.Drawing.Point(98, 282);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(125, 42);
             this.LogoutButton.Style = MetroFramework.MetroColorStyle.Teal;
@@ -308,7 +350,7 @@
             this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.ExitButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.ExitButton.Location = new System.Drawing.Point(82, 301);
+            this.ExitButton.Location = new System.Drawing.Point(82, 347);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(159, 42);
             this.ExitButton.Style = MetroFramework.MetroColorStyle.Teal;
@@ -328,7 +370,7 @@
             this.AboutButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AboutButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.AboutButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.AboutButton.Location = new System.Drawing.Point(98, 163);
+            this.AboutButton.Location = new System.Drawing.Point(98, 223);
             this.AboutButton.Name = "AboutButton";
             this.AboutButton.Size = new System.Drawing.Size(125, 42);
             this.AboutButton.Style = MetroFramework.MetroColorStyle.Orange;
@@ -425,26 +467,6 @@
             this.panel3.Size = new System.Drawing.Size(274, 433);
             this.panel3.TabIndex = 19;
             // 
-            // SavefileButton
-            // 
-            this.SavefileButton.BackColor = System.Drawing.Color.Transparent;
-            this.SavefileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SavefileButton.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.SavefileButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.SavefileButton.Location = new System.Drawing.Point(98, 98);
-            this.SavefileButton.Name = "SavefileButton";
-            this.SavefileButton.Size = new System.Drawing.Size(125, 42);
-            this.SavefileButton.Style = MetroFramework.MetroColorStyle.Orange;
-            this.SavefileButton.TabIndex = 7;
-            this.SavefileButton.TabStop = false;
-            this.SavefileButton.Text = "Save Files";
-            this.SavefileButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.SavefileButton.UseCustomBackColor = true;
-            this.SavefileButton.UseCustomForeColor = true;
-            this.SavefileButton.UseSelectable = true;
-            this.SavefileButton.UseStyleColors = true;
-            this.SavefileButton.Click += new System.EventHandler(this.SavefileButton_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -507,6 +529,7 @@
         private MetroFramework.Controls.MetroButton FolderButton;
         private MetroFramework.Controls.MetroButton FileButton;
         private MetroFramework.Controls.MetroButton SavefileButton;
+        private MetroFramework.Controls.MetroButton LogButton;
     }
 }
 
