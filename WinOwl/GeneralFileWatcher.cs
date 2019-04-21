@@ -34,9 +34,7 @@ namespace WinOwl
 
         public void Start()
         {
-
             Watch();
-
         }
 
         #region Watch method

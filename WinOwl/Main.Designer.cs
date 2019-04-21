@@ -49,7 +49,6 @@
             this.SavefileButton = new MetroFramework.Controls.MetroButton();
             this.LogoutButton = new MetroFramework.Controls.MetroButton();
             this.ExitButton = new MetroFramework.Controls.MetroButton();
-            this.AboutButton = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.StartButton = new MetroFramework.Controls.MetroButton();
             this.StopButton = new MetroFramework.Controls.MetroButton();
@@ -277,11 +276,10 @@
             this.SlidePanel.Controls.Add(this.SavefileButton);
             this.SlidePanel.Controls.Add(this.LogoutButton);
             this.SlidePanel.Controls.Add(this.ExitButton);
-            this.SlidePanel.Controls.Add(this.AboutButton);
             this.SlidePanel.Controls.Add(this.metroButton4);
             this.SlidePanel.Location = new System.Drawing.Point(0, 1);
             this.SlidePanel.Name = "SlidePanel";
-            this.SlidePanel.Size = new System.Drawing.Size(351, 526);
+            this.SlidePanel.Size = new System.Drawing.Size(280, 526);
             this.SlidePanel.TabIndex = 14;
             // 
             // LogButton
@@ -290,7 +288,8 @@
             this.LogButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LogButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.LogButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.LogButton.Location = new System.Drawing.Point(98, 95);
+            this.LogButton.ForeColor = System.Drawing.Color.MintCream;
+            this.LogButton.Location = new System.Drawing.Point(75, 72);
             this.LogButton.Name = "LogButton";
             this.LogButton.Size = new System.Drawing.Size(125, 42);
             this.LogButton.Style = MetroFramework.MetroColorStyle.Orange;
@@ -310,7 +309,8 @@
             this.SavefileButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SavefileButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.SavefileButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.SavefileButton.Location = new System.Drawing.Point(98, 159);
+            this.SavefileButton.ForeColor = System.Drawing.Color.MintCream;
+            this.SavefileButton.Location = new System.Drawing.Point(75, 148);
             this.SavefileButton.Name = "SavefileButton";
             this.SavefileButton.Size = new System.Drawing.Size(125, 42);
             this.SavefileButton.Style = MetroFramework.MetroColorStyle.Orange;
@@ -330,7 +330,8 @@
             this.LogoutButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LogoutButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.LogoutButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.LogoutButton.Location = new System.Drawing.Point(98, 282);
+            this.LogoutButton.ForeColor = System.Drawing.Color.MintCream;
+            this.LogoutButton.Location = new System.Drawing.Point(75, 220);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(125, 42);
             this.LogoutButton.Style = MetroFramework.MetroColorStyle.Teal;
@@ -350,9 +351,10 @@
             this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.ExitButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.ExitButton.Location = new System.Drawing.Point(82, 347);
+            this.ExitButton.ForeColor = System.Drawing.Color.MintCream;
+            this.ExitButton.Location = new System.Drawing.Point(58, 305);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(159, 42);
+            this.ExitButton.Size = new System.Drawing.Size(160, 42);
             this.ExitButton.Style = MetroFramework.MetroColorStyle.Teal;
             this.ExitButton.TabIndex = 5;
             this.ExitButton.TabStop = false;
@@ -363,26 +365,6 @@
             this.ExitButton.UseSelectable = true;
             this.ExitButton.UseStyleColors = true;
             this.ExitButton.Click += new System.EventHandler(this.AboutButton_Click);
-            // 
-            // AboutButton
-            // 
-            this.AboutButton.BackColor = System.Drawing.Color.Transparent;
-            this.AboutButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutButton.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.AboutButton.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.AboutButton.Location = new System.Drawing.Point(98, 223);
-            this.AboutButton.Name = "AboutButton";
-            this.AboutButton.Size = new System.Drawing.Size(125, 42);
-            this.AboutButton.Style = MetroFramework.MetroColorStyle.Orange;
-            this.AboutButton.TabIndex = 4;
-            this.AboutButton.TabStop = false;
-            this.AboutButton.Text = "About";
-            this.AboutButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.AboutButton.UseCustomBackColor = true;
-            this.AboutButton.UseCustomForeColor = true;
-            this.AboutButton.UseSelectable = true;
-            this.AboutButton.UseStyleColors = true;
-            this.AboutButton.Click += new System.EventHandler(this.AboutButton_Click);
             // 
             // metroButton4
             // 
@@ -431,7 +413,7 @@
             this.CloseButton.BackColor = System.Drawing.Color.Transparent;
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.CloseButton.Location = new System.Drawing.Point(914, 29);
+            this.CloseButton.Location = new System.Drawing.Point(1176, 12);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(43, 23);
             this.CloseButton.TabIndex = 6;
@@ -521,7 +503,6 @@
         private MetroFramework.Controls.MetroButton CloseButton;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private MetroFramework.Controls.MetroButton ExitButton;
-        private MetroFramework.Controls.MetroButton AboutButton;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Panel panel3;
         private MetroFramework.Controls.MetroButton LogoutButton;

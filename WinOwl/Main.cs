@@ -29,9 +29,6 @@ namespace WinOwl
             InitializeComponent();
           //  SystemEvents.SessionEnding += SessionEndingEvtHandler;
         }
-
-        
-
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
@@ -60,13 +57,11 @@ namespace WinOwl
             {
                 SlidePanel.Visible = true;
                 SlidePanel.Width = panelwidth;
-              //  bunifuTransition1.ShowSync(SlidePanel);  
             }
             else {
                 //SlidePanel.Visible = false; 
                 //SlidePanel.Width = 0;
                 SlidePanel.Width = 0;
-               // bunifuFormFadeTransition1.ShowAsyc(SlidePanel);
                 SlidePanel.Visible = false;
 
             }
@@ -219,15 +214,6 @@ namespace WinOwl
             }
             else { MessageBox.Show("Error in reseting..", "ALert", MessageBoxButtons.OK, MessageBoxIcon.Error);Login.Form1Instance.Dispose(); }
         }
-        //private void SessionEndingEvtHandler(object sender, SessionEndingEventArgs e)
-        //{
-        //    MessageBox.Show("Cancelling Windows shutdown");
-        //    string cmd = "shutdown /a";
-        //    Process.Start(cmd);// for executing system command.
-
-
-        //}
-
 
         #region Copied files
         //private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -342,22 +328,15 @@ namespace WinOwl
 
         private void SavefileButton_Click(object sender, EventArgs e)
         {
-            if (Save.SaveForm == null)
-            {
                 Save s = new Save();
                 s.Show();
-            }
-            else { Save.SaveForm.Show(); }
         }
 
         private void LogButton_Click(object sender, EventArgs e)
         {
-            if (LogForm.LogForm1 == null)
-            {
                 LogForm l = new LogForm();
                 l.Show();
-            }
-            else LogForm.LogForm1.Show();
+            
         }
 
         private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)

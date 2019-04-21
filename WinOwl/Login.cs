@@ -21,13 +21,15 @@ namespace WinOwl
 
         public Login()
         {
+            this.BackColor = Color.FromArgb(43, 39, 59);
             Form1Instance = this;
             InitializeComponent();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if(UsernameTextbox.Text == "smit" && PasswordTextbox.Text == "smit123")
+            Creditional c = new Creditional();
+            if(UsernameTextbox.Text == c.Readuser() && PasswordTextbox.Text == c.Readpass())
             {
                 Hide();
                 if (Main.MainForm == null)
@@ -70,6 +72,17 @@ namespace WinOwl
         {
             Login.Form1Instance.Show();
             LoginNotify.Visible = false;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!File.Exists(Creditional.sam1))
+            {
+                Hide();
+                Registerform r = new Registerform();
+                r.Show();
+            }
+            else MessageBox.Show("Admin already registered.");
         }
 
 

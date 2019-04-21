@@ -13,17 +13,10 @@ namespace WinOwl
 {
     public partial class Save : MetroForm
     {
-        public static MetroForm SaveForm = null;
         private List<string> checkrows;
         public Save()
         {
-            SaveForm = this;
             InitializeComponent();
-            //DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-            //dgvCmb.ValueType = typeof(bool);
-            //dgvCmb.Name = "Save";
-            //dgvCmb.HeaderText = "SaveFile";
-            //dataGridView1.Columns.Add(dgvCmb);
             if (File.Exists(Log.CreateFile))
             {
                 DataSet dataSet = new DataSet();
@@ -46,17 +39,6 @@ namespace WinOwl
                 dgvCmb1.HeaderText = "SaveFile";
                 RenameGrid.Columns.Add(dgvCmb1);
             }
-
-            //DataSet dataSet2 = new DataSet();
-            //dataSet2.ReadXml(Log.RecentFile);
-            //RecentGrid.DataSource = dataSet2.Tables[0];
-            //DataGridViewCheckBoxColumn dgvCmb1 = new DataGridViewCheckBoxColumn();
-            //dgvCmb1.ValueType = typeof(bool);
-            //dgvCmb1.Name = "Save";
-            //dgvCmb1.HeaderText = "SaveFile";
-            //RenameGrid.Columns.Add(dgvCmb1);
-
-
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {

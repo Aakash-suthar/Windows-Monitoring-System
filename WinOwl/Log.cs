@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
@@ -14,6 +15,10 @@ namespace WinOwl
         private static int ID = 0;
         private static string filename = null;
         private static bool newcreate = false;
+        private static string key2 = "HR$2pIjHR$2pIj12sef";
+        private static SymmetricAlgorithm obj2;
+
+
 
         #region File names
         public static string CreateFile = @"C:\Users\vishal\Desktop\CreateFileLog.xml";
@@ -23,8 +28,6 @@ namespace WinOwl
         public static string RecentFile = @"C:\Users\vishal\Desktop\RecentFileLog.xml";
         #endregion
 
-
-   
 
         #region Log Methods
         public static void LogIt(EventType eventtype, string oldfilename,string newfilename) {
@@ -181,7 +184,7 @@ namespace WinOwl
                     }
                 }
             }
-                //File.Delete(RenameFile);
+                File.Delete(RenameFile);
         }
         public static void clear()
         {
@@ -221,7 +224,7 @@ namespace WinOwl
                 FolderMonitor.GetInstance().EndMonitoring();
                 ProgramWatcher.GetInstance().EndMonitoring();
                 Renamereset();
-            //    Createreset();
+                Createreset();
                 clear();
                 return true;
             }
@@ -233,10 +236,7 @@ namespace WinOwl
 
 
         #region SaveFile method
-        public static void Savefile()
-        {
-          
-        }
+      
         #endregion
     }
 }

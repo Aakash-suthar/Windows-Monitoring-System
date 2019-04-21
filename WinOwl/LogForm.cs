@@ -14,10 +14,8 @@ namespace WinOwl
 {
     public partial class LogForm : MetroForm
     {
-        public static MetroForm LogForm1 = null;
         public LogForm()
         {
-            LogForm1 = this;
                 InitializeComponent();
 
             if (File.Exists(Log.CreateFile))
