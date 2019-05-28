@@ -15,5 +15,4 @@ C:\Users\vishal\source\repos\WinOwl\WinOwl\obj\Debug\WinOwl.csproj.CopyComplete
 C:\Users\vishal\source\repos\WinOwl\WinOwl\obj\Debug\WinOwl.exe
 C:\Users\vishal\source\repos\WinOwl\WinOwl\obj\Debug\WinOwl.pdb
 C:\Users\vishal\source\repos\WinOwl\WinOwl\obj\Debug\WinOwl.LogForm.resources
-C:\Users\vishal\source\repos\WinOwl\WinOwl\obj\Debug\WinOwl.Login2.resources
 C:\Users\vishal\source\repos\WinOwl\WinOwl\obj\Debug\WinOwl.Registerform.resources

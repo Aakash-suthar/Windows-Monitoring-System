@@ -102,12 +102,6 @@
     <Compile Include="LogForm.Designer.cs">
       <DependentUpon>LogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login2.Designer.cs">
-      <DependentUpon>Login2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,7 +120,6 @@
     <Compile Include="Network\ClientConnection.cs" />
     <Compile Include="Network\EventSender.cs" />
     <Compile Include="Network\ServerInformation.cs" />
-    <Compile Include="Program - Copy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramLog.cs" />
     <Compile Include="ProgramWatcher.cs" />
@@ -147,9 +140,6 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="LogForm.resx">
       <DependentUpon>LogForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login2.resx">
-      <DependentUpon>Login2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
